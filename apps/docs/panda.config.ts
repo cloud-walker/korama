@@ -1,8 +1,10 @@
 import { defineConfig } from "@pandacss/dev";
 
 export default defineConfig({
-  // Whether to use css reset
   preflight: true,
+  strictPropertyValues: true,
+  strictTokens: true,
+  validation: "error",
 
   // Where to look for your css declarations
   include: ["./app/**/*.{js,jsx,ts,tsx}"],
