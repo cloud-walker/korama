@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <h1
       className={css({
-        color: "red",
+        color: "red.700",
       })}
     >
       Hello, Bento!

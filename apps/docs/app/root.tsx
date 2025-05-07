@@ -9,18 +9,9 @@ import {
 
 import type { Route } from "./+types/root";
 import stylesheet from "./app.css?url";
+import { css } from "styled-system/css";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
   { rel: "stylesheet", href: stylesheet },
 ];
 
@@ -63,11 +54,25 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
+    <main
+      className={css({
+        maxWidth: "xl",
+        paddingBlockStart: "16",
+        paddingInline: "4",
+        paddingBlockEnd: "4",
+        marginInline: "auto",
+      })}
+    >
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
+        <pre
+          className={css({
+            width: "full",
+            padding: "4",
+            overflowX: "auto",
+          })}
+        >
           <code>{stack}</code>
         </pre>
       )}
