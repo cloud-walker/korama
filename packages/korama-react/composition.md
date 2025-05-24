@@ -20,7 +20,7 @@ This lets us elegantly solve common composition problems, where we want to rende
 
 ```tsx
 // MyButton.tsx
-import { Box } from "@korama/react";
+import { Box, type BoxProps } from "@korama/react";
 
 export function MyButton(props: BoxProps<"button">) {
   return <Box.button className="btn" {...props} />;
@@ -48,3 +48,5 @@ export function MyComponent() {
   );
 }
 ```
+
+p
