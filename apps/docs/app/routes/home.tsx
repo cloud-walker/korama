@@ -9,7 +9,7 @@ export default function Home() {
           color: "red.700",
         })}
       >
-        Hello, Bento!
+        Hello, Korama!
       </h1>
       <Box>aho</Box>
     </>

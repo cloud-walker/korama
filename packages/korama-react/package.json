@@ -1,5 +1,5 @@
 {
-  "name": "@bentobox/core",
+  "name": "@korama/react",
   "version": "0.0.0",
   "publishConfig": {
     "access": "public"
