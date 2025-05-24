@@ -1,5 +1,5 @@
 {
-  "name": "@bento/react",
+  "name": "@bentobox/core",
   "version": "0.0.0",
   "publishConfig": {
     "access": "public"
