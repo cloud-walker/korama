@@ -3,5 +3,18 @@
   "version": "0.0.0",
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "check-types": "tsc",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.5",
+    "react": "^19.1.0",
+    "typescript": "~5.8.3",
+    "vitest": "^3.1.4"
+  },
+  "peerDependencies": {
+    "react": "^19.1.0"
   }
 }
