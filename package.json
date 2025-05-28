@@ -8,6 +8,7 @@
     "check-types": "turbo check-types",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo test",
+    "coverage": "turbo coverage",
     "release": "changeset publish"
   },
   "devDependencies": {
