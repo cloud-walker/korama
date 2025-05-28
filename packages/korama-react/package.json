@@ -6,13 +6,21 @@
   },
   "scripts": {
     "check-types": "tsc",
-    "test": "vitest"
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.0",
+    "@vitest/browser": "^3.1.4",
+    "@vitest/coverage-v8": "^3.1.4",
+    "playwright": "^1.52.0",
     "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "typescript": "~5.8.3",
-    "vitest": "^3.1.4"
+    "vitest": "^3.1.4",
+    "vitest-browser-react": "^0.2.0"
   },
   "peerDependencies": {
     "react": "^19.1.0"
