@@ -8,8 +8,12 @@ on:
 concurrency: ${{github.workflow}}-${{github.ref}}
 
 jobs:
+  validate:
+    uses: ./.github/workflows/_validate.yml
+
   release:
     name: Release
+    needs: validate
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
