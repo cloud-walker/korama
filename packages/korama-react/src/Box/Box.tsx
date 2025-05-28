@@ -2,10 +2,13 @@ import { createElement } from "react";
 
 type ElementType = Extract<React.ElementType, string>;
 
+export type BoxProps<TElementType extends ElementType> =
+  React.ComponentPropsWithRef<TElementType>;
+
 function makeElementComponent<TElementType extends ElementType>(
   element: TElementType
 ) {
-  const Component = (props: React.ComponentPropsWithRef<TElementType>) => {
+  const Component = (props: BoxProps<TElementType>) => {
     return createElement(element, props);
   };
   Component.displayName = `Box.${element}`;
