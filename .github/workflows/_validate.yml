@@ -34,5 +34,5 @@ jobs:
         with:
           cache: "pnpm"
       - run: pnpm i --frozen-lockfile
-      - run: pnpm exec playwright install
+      - run: pnpm --filter @korama/react exec playwright install
       - run: pnpm coverage
