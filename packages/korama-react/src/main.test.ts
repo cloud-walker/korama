@@ -10,8 +10,6 @@ test("API is respected", () => {
       "Box",
     ]
   `);
-});
 
-test("Box component is created", () => {
   expectTypeOf<API.BoxProps<"div">>().not.toBeNullable();
 });
