@@ -6,23 +6,27 @@ jobs:
   check-types:
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm-install
       - run: pnpm check-types
 
   lint:
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm-install
       - run: pnpm lint
 
   build:
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm-install
       - run: pnpm build
 
   coverage:
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm-install
       - run: pnpm coverage
