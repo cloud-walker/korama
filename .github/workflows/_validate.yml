@@ -6,33 +6,23 @@ jobs:
   check-types:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          cache: "pnpm"
-      - run: pnpm i --frozen-lockfile
+      - uses: ./.github/actions/pnpm-install
       - run: pnpm check-types
+
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: ./.github/actions/pnpm-install
+      - run: pnpm lint
 
   build:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          cache: "pnpm"
-      - run: pnpm i --frozen-lockfile
+      - uses: ./.github/actions/pnpm-install
       - run: pnpm build
 
   coverage:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          cache: "pnpm"
-      - run: pnpm i --frozen-lockfile
-      - run: pnpm --filter @korama/react exec playwright install
+      - uses: ./.github/actions/pnpm-install
       - run: pnpm coverage
