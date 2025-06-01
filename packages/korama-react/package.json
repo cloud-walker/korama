@@ -1,11 +1,13 @@
 {
   "name": "@korama/react",
   "version": "0.0.0",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "check-types": "tsc",
+    "build": "tsup",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
@@ -18,6 +20,7 @@
     "playwright": "^1.52.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "tsup": "^8.5.0",
     "typescript": "~5.8.3",
     "vitest": "^3.1.4",
     "vitest-browser-react": "^0.2.0"
