@@ -1,4 +1,5 @@
 name: pnpm install
+description: Setup node, pnpm and install dependencies
 runs:
   using: composite
   steps:
