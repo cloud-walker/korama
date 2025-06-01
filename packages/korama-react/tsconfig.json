@@ -3,6 +3,8 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
+    "module": "Preserve",
+    "moduleResolution": "bundler",
 
     "jsx": "react-jsx",
     "types": ["@vitest/browser/providers/playwright"]
