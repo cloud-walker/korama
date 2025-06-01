@@ -1,27 +1,27 @@
 {
-  "name": "korama",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "check-types": "turbo check-types",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "test": "turbo test",
-    "coverage": "turbo coverage",
-    "release": "changeset publish"
-  },
-  "devDependencies": {
-    "playwright": "^1.52.0",
-    "prettier": "^3.5.3",
-    "turbo": "^2.5.3",
-    "typescript": "5.8.3"
-  },
-  "packageManager": "pnpm@10.11.0",
-  "engines": {
-    "node": ">=18"
-  },
-  "dependencies": {
-    "@changesets/cli": "^2.29.4"
-  }
+	"name": "korama",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"lint": "turbo lint",
+		"check-types": "turbo check-types",
+		"format": "biome format --write .",
+		"test": "turbo test",
+		"coverage": "turbo coverage",
+		"release": "changeset publish"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"playwright": "^1.52.0",
+		"turbo": "^2.5.3",
+		"typescript": "5.8.3"
+	},
+	"packageManager": "pnpm@10.11.0",
+	"engines": {
+		"node": ">=18"
+	},
+	"dependencies": {
+		"@changesets/cli": "^2.29.4"
+	}
 }
