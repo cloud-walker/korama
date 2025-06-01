@@ -1,4 +1,4 @@
-import { defineConfig } from "@pandacss/dev";
+import {defineConfig} from "@pandacss/dev"
 
 export default defineConfig({
 	preflight: true,
@@ -19,4 +19,4 @@ export default defineConfig({
 
 	// The output directory for your css system
 	outdir: "styled-system",
-});
+})
