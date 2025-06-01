@@ -12,6 +12,7 @@
     "release": "changeset publish"
   },
   "devDependencies": {
+    "playwright": "^1.52.0",
     "prettier": "^3.5.3",
     "turbo": "^2.5.3",
     "typescript": "5.8.3"

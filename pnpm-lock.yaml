@@ -12,6 +12,9 @@ importers:
         specifier: ^2.29.4
         version: 2.29.4
     devDependencies:
+      playwright:
+        specifier: ^1.52.0
+        version: 1.52.0
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -87,9 +90,6 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^3.1.4
         version: 3.1.4(@vitest/browser@3.1.4)(vitest@3.1.4)
-      playwright:
-        specifier: ^1.52.0
-        version: 1.52.0
       publint:
         specifier: ^0.3.12
         version: 0.3.12
