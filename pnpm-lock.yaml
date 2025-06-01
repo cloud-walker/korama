@@ -27,6 +27,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@korama/react':
+        specifier: workspace:*
+        version: link:../../packages/korama-react
       '@react-router/node':
         specifier: ^7.6.1
         version: 7.6.1(react-router@7.6.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
