@@ -6,11 +6,11 @@ The `Box` component is the swiss army knife of the Korama UI library. It allows 
 import { Box } from "@korama/react";
 
 export function MyComponent() {
-  return <Box.button />;
+  return <Box.button type="button" />;
 }
 ```
 
-Every component in Korama, tends to expose the `Box` component props, so you use it compose them together.
+Every component in Korama, tends to expose the `Box` component props.
 
 ## The `as` prop
 

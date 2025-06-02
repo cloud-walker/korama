@@ -1,15 +1,22 @@
-import {createElement} from "react"
+import {cloneElement, createElement} from "react"
 
 type ElementType = Extract<React.ElementType, string>
 
 export type BoxProps<TElementType extends ElementType> =
-	React.ComponentPropsWithRef<TElementType>
+	React.ComponentPropsWithRef<TElementType> & {
+		as?: React.ReactElement
+	}
 
 function makeElementComponent<TElementType extends ElementType>(
 	element: TElementType,
 ) {
-	const Component = (props: BoxProps<TElementType>) => {
-		return createElement(element, props)
+	const Component = ({as, ...props}: BoxProps<TElementType>) => {
+		if (as == null) {
+			return createElement(element, props)
+
+		}
+
+		return cloneElement(as, props)
 	}
 	Component.displayName = `Box.${element}`
 	return Component
