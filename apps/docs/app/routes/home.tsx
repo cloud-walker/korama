@@ -11,7 +11,7 @@ export default function Home() {
 			>
 				Hello, Korama!
 			</h1>
-			<Box.button>aho</Box.button>
+			<Box.div as={<button type="button" />}>aho</Box.div>
 		</>
 	)
 }
