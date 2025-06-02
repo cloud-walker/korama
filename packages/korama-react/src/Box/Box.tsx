@@ -13,10 +13,9 @@ function makeElementComponent<TElementType extends ElementType>(
 	const Component = ({as, ...props}: BoxProps<TElementType>) => {
 		if (as == null) {
 			return createElement(element, props)
-
 		}
 
-		return cloneElement(as, props)
+		return cloneElement(as, {...props, ...as.props})
 	}
 	Component.displayName = `Box.${element}`
 	return Component
