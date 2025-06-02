@@ -4,7 +4,7 @@ type ElementType = Extract<React.ElementType, string>
 
 export type BoxProps<TElementType extends ElementType> =
 	React.ComponentPropsWithRef<TElementType> & {
-		as?: React.ReactElement
+		as?: React.ReactElement<Record<string, unknown>>
 	}
 
 function makeElementComponent<TElementType extends ElementType>(
