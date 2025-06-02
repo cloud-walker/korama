@@ -3,9 +3,27 @@
 	"formatter": {
 		"bracketSpacing": false
 	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"organizeImports": {
+		"enabled": true
+	},
 	"javascript": {
 		"formatter": {
 			"semicolons": "asNeeded"
 		}
+	},
+	"files": {
+		"ignore": [
+			"**/dist",
+			"**/build",
+			"**/styled-system",
+			"**/.react-router",
+			"**/coverage"
+		]
 	}
 }

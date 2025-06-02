@@ -1,15 +1,15 @@
 import {
-	isRouteErrorResponse,
 	Links,
 	Meta,
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	isRouteErrorResponse,
 } from "react-router"
 
+import {css} from "styled-system/css"
 import type {Route} from "./+types/root"
 import stylesheet from "./app.css?url"
-import {css} from "styled-system/css"
 
 export const links: Route.LinksFunction = () => [
 	{rel: "stylesheet", href: stylesheet},
