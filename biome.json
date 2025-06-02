@@ -23,7 +23,8 @@
 			"**/build",
 			"**/styled-system",
 			"**/.react-router",
-			"**/coverage"
+			"**/coverage",
+			"**/.turbo"
 		]
 	}
 }
