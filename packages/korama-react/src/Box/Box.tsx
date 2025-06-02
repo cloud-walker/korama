@@ -1,4 +1,5 @@
 import {cloneElement, createElement} from "react"
+import {mergeProps} from "./mergeProps"
 
 type ElementType = Extract<React.ElementType, string>
 
@@ -15,7 +16,7 @@ function makeElementComponent<TElementType extends ElementType>(
 			return createElement(element, props)
 		}
 
-		return cloneElement(as, {...props, ...as.props})
+		return cloneElement(as, mergeProps(props, as.props))
 	}
 	Component.displayName = `Box.${element}`
 	return Component
