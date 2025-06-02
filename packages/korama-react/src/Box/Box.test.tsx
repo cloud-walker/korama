@@ -81,4 +81,16 @@ describe("as prop", () => {
 		await expect.element(button).toBeInTheDocument()
 		await expect.element(button).toHaveClass("alpha beta")
 	})
+
+	test("render prop", () => {
+		const screen = render(
+			<Box.div as={(props) => <button {...props} type="button" />}>
+				Render prop button
+			</Box.div>,
+		)
+
+		expect(
+			screen.getByRole("button", {name: "Render prop button"}),
+		).toBeInTheDocument()
+	})
 })
