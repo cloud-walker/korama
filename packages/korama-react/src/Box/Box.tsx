@@ -1,11 +1,19 @@
-import {cloneElement, createElement} from "react"
+import {cloneElement, createElement, isValidElement} from "react"
 import {mergeProps} from "./mergeProps"
 
 type ElementType = Extract<React.ElementType, string>
 
+type RenderProp<
+	// biome-ignore lint/suspicious/noExplicitAny: We intentionally allow any here to be able to merge props
+	TProps = React.HTMLAttributes<any> & {
+		// biome-ignore lint/suspicious/noExplicitAny: We intentionally allow any here to be able to merge props
+		ref?: React.Ref<any>
+	},
+> = (props: TProps) => React.ReactNode
+
 export type BoxProps<TElementType extends ElementType> =
 	React.ComponentPropsWithRef<TElementType> & {
-		as?: React.ReactElement<Record<string, unknown>>
+		as?: React.ReactElement<Record<string, unknown>> | RenderProp
 	}
 
 function makeElementComponent<TElementType extends ElementType>(
@@ -16,7 +24,11 @@ function makeElementComponent<TElementType extends ElementType>(
 			return createElement(element, props)
 		}
 
-		return cloneElement(as, mergeProps(props, as.props))
+		if (isValidElement(as)) {
+			return cloneElement(as, mergeProps(props, as.props))
+		}
+
+		return as(props)
 	}
 	Component.displayName = `Box.${element}`
 	return Component
