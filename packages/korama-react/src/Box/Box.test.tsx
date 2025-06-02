@@ -52,4 +52,33 @@ describe("as prop", () => {
 		expect.soft(handleDivClick).toHaveBeenCalled()
 		expect.soft(handleButtonClick).toHaveBeenCalled()
 	})
+
+	test("merge style props", async () => {
+		const screen = render(
+			<Box.div
+				style={{color: "rgb(0, 255, 0)", backgroundColor: "rgb(0, 0, 255)"}}
+				as={<button type="button" style={{color: "rgb(255, 0, 0)"}} />}
+			>
+				Click me
+			</Box.div>,
+		)
+
+		const button = screen.getByRole("button", {name: "Click me"})
+		await expect.element(button).toBeInTheDocument()
+		await expect
+			.element(button)
+			.toHaveStyle({color: "rgb(255, 0, 0)", backgroundColor: "rgb(0, 0, 255)"})
+	})
+
+	test("merge className props", async () => {
+		const screen = render(
+			<Box.div className="alpha" as={<button type="button" className="beta" />}>
+				Click me
+			</Box.div>,
+		)
+
+		const button = screen.getByRole("button", {name: "Click me"})
+		await expect.element(button).toBeInTheDocument()
+		await expect.element(button).toHaveClass("alpha beta")
+	})
 })

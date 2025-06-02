@@ -17,6 +17,20 @@ export function mergeProps(
 			}
 		}
 
+		if (overrideKey === "style") {
+			props.style = base.style
+				? {...base.style, ...(overrides.style as Record<string, unknown>)}
+				: overrides.style
+			continue
+		}
+
+		if (overrideKey === "className") {
+			props.className = base.className
+				? `${base.className} ${overrideValue}`
+				: overrideValue
+			continue
+		}
+
 		props[overrideKey] = overrideValue
 	}
 
