@@ -5,6 +5,9 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"check-types": "tsc",
 		"lint": "publint",
