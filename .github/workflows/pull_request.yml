@@ -1,0 +1,7 @@
+name: Pull request
+
+on: pull_request
+
+jobs:
+  validate:
+    uses: ./.github/workflows/_validate.yml

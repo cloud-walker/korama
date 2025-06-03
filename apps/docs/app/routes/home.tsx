@@ -1,17 +1,17 @@
-import { css } from "styled-system/css";
-import { Box } from "~/modules/Box";
+import {Box} from "@korama/react"
+import {css} from "styled-system/css"
 
 export default function Home() {
-  return (
-    <>
-      <h1
-        className={css({
-          color: "red.700",
-        })}
-      >
-        Hello, Korama!
-      </h1>
-      <Box>aho</Box>
-    </>
-  );
+	return (
+		<>
+			<h1
+				className={css({
+					color: "red.700",
+				})}
+			>
+				Hello, Korama!
+			</h1>
+			<Box.div as={(p) => <button {...p} type="button" />}>aho</Box.div>
+		</>
+	)
 }

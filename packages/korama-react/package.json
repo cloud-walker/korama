@@ -1,7 +1,38 @@
 {
-  "name": "@korama/react",
-  "version": "0.0.0",
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "@korama/react",
+	"version": "0.0.0",
+	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"check-types": "tsc",
+		"lint": "publint",
+		"build": "tsup",
+		"test": "vitest",
+		"coverage": "vitest run --coverage"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/main.d.ts",
+			"default": "./dist/main.js"
+		}
+	},
+	"devDependencies": {
+		"@types/react": "^19.1.6",
+		"@types/react-dom": "^19.1.5",
+		"@vitejs/plugin-react": "^4.5.1",
+		"@vitest/browser": "^3.2.1",
+		"@vitest/coverage-v8": "^3.2.1",
+		"publint": "^0.3.12",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"tsup": "^8.5.0",
+		"typescript": "~5.8.3",
+		"vitest": "^3.2.1",
+		"vitest-browser-react": "^0.2.0"
+	},
+	"peerDependencies": {
+		"react": "^19.1.0"
+	}
 }
