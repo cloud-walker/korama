@@ -1,5 +1,11 @@
 # @korama/react
 
+## 0.1.1
+
+### Patch Changes
+
+- 7768cda: Expose dist folder
+
 ## 0.1.0
 
 ### Minor Changes
