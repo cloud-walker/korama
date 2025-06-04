@@ -1,5 +1,11 @@
 # @korama/react
 
+## 0.1.2
+
+### Patch Changes
+
+- 16610d4: Fix missing build before publishing
+
 ## 0.1.1
 
 ### Patch Changes
