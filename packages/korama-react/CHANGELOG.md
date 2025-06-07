@@ -1,5 +1,11 @@
 # @korama/react
 
+## 0.1.3
+
+### Patch Changes
+
+- b1567a8: Using the as prop ReactElement version, now merges the refs
+
 ## 0.1.2
 
 ### Patch Changes
