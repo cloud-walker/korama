@@ -11,10 +11,42 @@ type RenderProp<
 	},
 > = (props: TProps) => React.ReactNode
 
+type AsProp =
+	| React.ReactElement<
+			Record<string, unknown> & {
+				ref?: React.Ref<HTMLElement> | undefined
+			}
+	  >
+	| RenderProp
+
 export type BoxProps<TElementType extends ElementType> =
 	React.ComponentPropsWithRef<TElementType> & {
-		as?: React.ReactElement<Record<string, unknown>> | RenderProp
+		as?: AsProp
 	}
+
+function getRefFromAsProp(as?: AsProp) {
+	if (as == null || typeof as === "function") {
+		return
+	}
+	return as.props.ref
+}
+
+function mergeRefs(...refs: readonly (React.Ref<unknown> | undefined)[]) {
+	if (refs.every((r) => r == null)) {
+		return
+	}
+	return (value: unknown) => {
+		for (const ref of refs) {
+			if (typeof ref === "function") {
+				ref(value)
+				continue
+			}
+			if (ref != null) {
+				ref.current = value
+			}
+		}
+	}
+}
 
 function makeElementComponent<TElementType extends ElementType>(
 	element: TElementType,
@@ -23,11 +55,11 @@ function makeElementComponent<TElementType extends ElementType>(
 		if (as == null) {
 			return createElement(element, props)
 		}
-
 		if (isValidElement(as)) {
-			return cloneElement(as, mergeProps(props, as.props))
+			const asRef = getRefFromAsProp(as)
+			const mergedRef = mergeRefs(props.ref, asRef)
+			return cloneElement(as, mergeProps(props, {...as.props, ref: mergedRef}))
 		}
-
 		return as(props)
 	}
 	Component.displayName = `Box.${element}`

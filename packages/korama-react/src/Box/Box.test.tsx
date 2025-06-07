@@ -150,7 +150,7 @@ describe("ref handling", () => {
 			</Box.div>,
 		)
 
-		expect.soft(divRef).toHaveBeenCalledWith(expect.any(HTMLDivElement))
+		expect.soft(divRef).toHaveBeenCalledWith(expect.any(HTMLButtonElement))
 		expect.soft(buttonRef).toHaveBeenCalledWith(expect.any(HTMLButtonElement))
 	})
 })
