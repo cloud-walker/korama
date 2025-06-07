@@ -1,52 +1,13 @@
 import {cloneElement, createElement, isValidElement} from "react"
+
 import {mergeProps} from "./mergeProps"
-
-type ElementType = Extract<React.ElementType, string>
-
-type RenderProp<
-	// biome-ignore lint/suspicious/noExplicitAny: We intentionally allow any here to be able to merge props
-	TProps = React.HTMLAttributes<any> & {
-		// biome-ignore lint/suspicious/noExplicitAny: We intentionally allow any here to be able to merge props
-		ref?: React.Ref<any>
-	},
-> = (props: TProps) => React.ReactNode
-
-type AsProp =
-	| React.ReactElement<
-			Record<string, unknown> & {
-				ref?: React.Ref<HTMLElement> | undefined
-			}
-	  >
-	| RenderProp
+import {getRefFromAsProp, mergeRefs} from "./mergeRefs"
+import type {AsProp, ElementType} from "./types"
 
 export type BoxProps<TElementType extends ElementType> =
 	React.ComponentPropsWithRef<TElementType> & {
 		as?: AsProp
 	}
-
-function getRefFromAsProp(as?: AsProp) {
-	if (as == null || typeof as === "function") {
-		return
-	}
-	return as.props.ref
-}
-
-function mergeRefs(...refs: readonly (React.Ref<unknown> | undefined)[]) {
-	if (refs.every((r) => r == null)) {
-		return
-	}
-	return (value: unknown) => {
-		for (const ref of refs) {
-			if (typeof ref === "function") {
-				ref(value)
-				continue
-			}
-			if (ref != null) {
-				ref.current = value
-			}
-		}
-	}
-}
 
 function makeElementComponent<TElementType extends ElementType>(
 	element: TElementType,
@@ -66,22 +27,15 @@ function makeElementComponent<TElementType extends ElementType>(
 	return Component
 }
 
-const componentsCache = new Map<
-	ElementType,
-	ReturnType<typeof makeElementComponent>
->()
-
-export const Box = new Proxy<{
+type ElementComponents = {
 	[K in ElementType]: ReturnType<typeof makeElementComponent<K>>
-}>(
-	// @ts-expect-error - we want to create a proxy for an object with dynamic keys
-	{},
-	{
-		get(_, elementType: ElementType) {
-			const ElementComponent =
-				componentsCache.get(elementType) ?? makeElementComponent(elementType)
-			componentsCache.set(elementType, ElementComponent)
-			return ElementComponent
-		},
+}
+
+const componentsCache: Partial<ElementComponents> = {}
+
+export const Box = new Proxy<ElementComponents>({} as ElementComponents, {
+	get(_, elementType: ElementType) {
+		componentsCache[elementType] ??= makeElementComponent(elementType)
+		return componentsCache[elementType]
 	},
-)
+})
