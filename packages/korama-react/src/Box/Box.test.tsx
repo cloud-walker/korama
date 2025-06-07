@@ -82,6 +82,26 @@ describe("as prop", () => {
 		await expect.element(button).toHaveClass("alpha beta")
 	})
 
+	test("pass className and style props to the as prop element", () => {
+		const screen = render(
+			<Box.div
+				as={
+					<button
+						type="button"
+						className="alpha"
+						style={{color: "rgb(0, 255, 0)"}}
+					/>
+				}
+			>
+				Click me
+			</Box.div>,
+		)
+
+		const button = screen.getByRole("button", {name: "Click me"})
+		expect(button).toHaveClass("alpha")
+		expect(button).toHaveStyle({color: "rgb(0, 255, 0)"})
+	})
+
 	test("render prop", () => {
 		const screen = render(
 			<Box.div as={(props) => <button {...props} type="button" />}>
