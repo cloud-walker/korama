@@ -114,3 +114,43 @@ describe("as prop", () => {
 		).toBeInTheDocument()
 	})
 })
+
+describe("ref handling", () => {
+	test("should forward ref to the underlying element", () => {
+		const ref = vi.fn()
+		render(<Box.div ref={ref}>Test</Box.div>)
+
+		expect(ref).toHaveBeenCalledWith(expect.any(HTMLDivElement))
+	})
+
+	test("should forward ref to the as prop element", () => {
+		const ref = vi.fn()
+		render(<Box.div as={<button type="button" ref={ref} />}>Test</Box.div>)
+
+		expect(ref).toHaveBeenCalledWith(expect.any(HTMLButtonElement))
+	})
+
+	test("should forward ref to the render prop element", () => {
+		const ref = vi.fn()
+		render(
+			<Box.div as={(props) => <button {...props} type="button" ref={ref} />}>
+				Render prop button with ref
+			</Box.div>,
+		)
+
+		expect(ref).toHaveBeenCalledWith(expect.any(HTMLButtonElement))
+	})
+
+	test("should forward ref on both <Box.div> and <button>", () => {
+		const buttonRef = vi.fn()
+		const divRef = vi.fn()
+		render(
+			<Box.div ref={divRef} as={<button type="button" ref={buttonRef} />}>
+				Test
+			</Box.div>,
+		)
+
+		expect.soft(divRef).toHaveBeenCalledWith(expect.any(HTMLDivElement))
+		expect.soft(buttonRef).toHaveBeenCalledWith(expect.any(HTMLButtonElement))
+	})
+})
