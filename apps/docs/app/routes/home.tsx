@@ -1,5 +1,6 @@
 import {Box} from "@korama/react"
 import {css} from "styled-system/css"
+import {styled} from "styled-system/jsx"
 
 export default function Home() {
 	return (
@@ -11,7 +12,19 @@ export default function Home() {
 			>
 				Hello, Korama!
 			</h1>
-			<Box.div as={(p) => <button {...p} type="button" />}>aho</Box.div>
+			<Box.div
+				as={(p) => (
+					<button
+						{...p}
+						type="button"
+						onClick={() => {
+							console.log("Button clicked")
+						}}
+					/>
+				)}
+			>
+				aho
+			</Box.div>
 		</>
 	)
 }

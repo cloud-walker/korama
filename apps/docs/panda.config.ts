@@ -5,6 +5,8 @@ export default defineConfig({
 	strictPropertyValues: true,
 	strictTokens: true,
 	validation: "error",
+	jsxFramework: "react",
+	jsxStyleProps: "minimal",
 
 	// Where to look for your css declarations
 	include: ["./app/**/*.{js,jsx,ts,tsx}"],
