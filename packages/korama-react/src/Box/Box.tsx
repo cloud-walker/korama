@@ -4,15 +4,17 @@ import {mergeProps} from "./mergeProps"
 import {getRefFromAsProp, mergeRefs} from "./mergeRefs"
 import type {AsProp, ElementType} from "./types"
 
-export type BoxProps<TElementType extends ElementType> =
-	React.ComponentPropsWithRef<TElementType> & {
-		as?: AsProp
-	}
+export namespace Box {
+	export type Props<TElementType extends ElementType> =
+		React.ComponentPropsWithRef<TElementType> & {
+			as?: AsProp
+		}
+}
 
 function makeElementComponent<TElementType extends ElementType>(
 	element: TElementType,
 ) {
-	const Component = ({as, ...props}: BoxProps<TElementType>) => {
+	const Component = ({as, ...props}: Box.Props<TElementType>) => {
 		if (as == null) {
 			return createElement(element, props)
 		}
