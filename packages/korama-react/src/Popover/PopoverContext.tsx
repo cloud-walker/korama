@@ -4,7 +4,8 @@ import {raise} from "../raise"
 
 export const PopoverContext = createContext<
 	| {
-			popoverRef: React.Ref<HTMLDivElement>
+			popoverRef: React.RefObject<HTMLDivElement | null>
+			targetId: string
 	  }
 	| undefined
 >(undefined)
