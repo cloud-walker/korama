@@ -11,5 +11,5 @@ test("API is respected", () => {
     ]
   `)
 
-	expectTypeOf<API.BoxProps<"div">>().not.toBeNullable()
+	expectTypeOf<API.Box.Props<"div">>().not.toBeNullable()
 })
