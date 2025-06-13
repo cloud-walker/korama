@@ -1,4 +1,4 @@
-import {Box} from "@korama/react"
+import {Box, Popover} from "@korama/react"
 import {css} from "styled-system/css"
 import {styled} from "styled-system/jsx"
 
@@ -25,6 +25,11 @@ export default function Home() {
 			>
 				aho
 			</Box.div>
+
+			<Popover.Root>
+				<Popover.Trigger>Click me</Popover.Trigger>
+				<Popover.Content>asdsdsadsad</Popover.Content>
+			</Popover.Root>
 		</>
 	)
 }

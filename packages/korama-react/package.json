@@ -12,6 +12,7 @@
 		"check-types": "tsc",
 		"lint": "publint",
 		"build": "tsup",
+		"dev": "tsup --watch",
 		"test": "vitest",
 		"coverage": "vitest run --coverage"
 	},
