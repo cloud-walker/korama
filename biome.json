@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.0.4/schema.json",
 	"formatter": {
 		"bracketSpacing": false
 	},
@@ -9,23 +9,18 @@
 			"recommended": true
 		}
 	},
-	"organizeImports": {
-		"enabled": true
-	},
+	"assist": {"actions": {"source": {"organizeImports": "on"}}},
 	"javascript": {
 		"formatter": {
 			"semicolons": "asNeeded"
 		}
 	},
 	"files": {
-		"ignore": [
-			"**/dist",
-			"**/build",
-			"**/styled-system",
-			"**/.react-router",
-			"**/coverage",
-			"**/.turbo",
-			"package.json"
+		"includes": [
+			"*.{js,ts}",
+			"apps/**/*.{ts,tsx}",
+			"packages/**/*.{ts,tsx}",
+			"!**/{styled-system,.react-router,dist}/**"
 		]
 	}
 }
