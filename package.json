@@ -12,8 +12,8 @@
 		"release": "changeset publish"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.0.4",
-		"playwright": "^1.53.1",
+		"@biomejs/biome": "^2.0.6",
+		"playwright": "^1.53.2",
 		"turbo": "^2.5.4",
 		"typescript": "5.8.3"
 	},
