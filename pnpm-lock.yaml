@@ -29,7 +29,7 @@ importers:
     dependencies:
       '@korama/react':
         specifier: workspace:*
-        version: link:../../packages/korama-react
+        version: link:../../packages/react
       '@react-router/node':
         specifier: ^7.8.0
         version: 7.8.0(react-router@7.8.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)
@@ -74,9 +74,9 @@ importers:
         specifier: ^5.1.4
         version: 5.1.4(typescript@5.9.2)(vite@7.1.1(@types/node@24.2.1)(lightningcss@1.25.1))
 
-  packages/korama-core: {}
+  packages/core: {}
 
-  packages/korama-react:
+  packages/react:
     devDependencies:
       '@types/react':
         specifier: ^19.1.9
