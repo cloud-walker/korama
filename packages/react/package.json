@@ -21,9 +21,6 @@
 			"default": "./dist/main.js"
 		}
 	},
-	"dependencies": {
-		"@korama/utils": "workspace:*"
-	},
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.18.2",
 		"@types/react": "^19.1.9",

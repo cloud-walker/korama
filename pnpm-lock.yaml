@@ -77,10 +77,6 @@ importers:
   packages/core: {}
 
   packages/react:
-    dependencies:
-      '@korama/utils':
-        specifier: workspace:*
-        version: link:../utils
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ^0.18.2
