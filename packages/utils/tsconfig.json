@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+		"noEmit": true,
+		"skipLibCheck": true,
+		"module": "Preserve",
+		"moduleResolution": "bundler",
   }
 }
