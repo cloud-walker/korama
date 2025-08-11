@@ -10,7 +10,7 @@
 	],
 	"scripts": {
 		"check-types": "tsc",
-		"lint": "publint",
+		"lint": "publint --strict && attw --profile esm-only --pack .",
 		"build": "tsup",
 		"test": "vitest",
 		"coverage": "vitest run --coverage"
@@ -21,7 +21,11 @@
 			"default": "./dist/main.js"
 		}
 	},
+	"dependencies": {
+		"@korama/utils": "workspace:*"
+	},
 	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.18.2",
 		"@types/react": "^19.1.9",
 		"@types/react-dom": "^19.1.7",
 		"@vitejs/plugin-react": "^5.0.0",

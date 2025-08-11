@@ -1,0 +1,32 @@
+{
+	"name": "@korama/utils",
+	"version": "0.0.0",
+	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"dist"
+	],
+  "exports": {
+		".": {
+			"types": "./dist/main.d.ts",
+			"default": "./dist/main.js"
+		}
+	},
+	"scripts": {
+		"check-types": "tsc",
+		"lint": "publint --strict && attw --profile esm-only --pack .",
+		"build": "tsup",
+		"test": "vitest",
+		"coverage": "vitest run --coverage"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.18.2",
+		"@vitest/coverage-v8": "^3.2.4",
+		"publint": "^0.3.12",
+		"tsup": "^8.5.0",
+		"typescript": "~5.9.2",
+		"vitest": "^3.2.4"
+	}
+}
