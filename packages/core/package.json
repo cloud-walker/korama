@@ -1,7 +1,27 @@
 {
 	"name": "@korama/core",
 	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"lint": "publint --strict && attw --profile esm-only --pack .",
+		"build": "tsup"
+	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"exports": {
+		"./config": {
+			"types": "./dist/panda.d.ts",
+			"default": "./dist/panda.js"
+		}
+	},
+	"dependencies": {
+		"@pandacss/dev": "^1.0.1"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.18.2",
+		"publint": "^0.3.12",
+		"tsup": "^8.5.0",
+		"typescript": "~5.9.2"
 	}
 }
