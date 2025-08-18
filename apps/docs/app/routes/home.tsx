@@ -7,6 +7,9 @@ export default function Home() {
 			<h1
 				className={css({
 					color: "red.700",
+					lg: {
+						color: "red.500",
+					},
 				})}
 			>
 				Hello, Korama!

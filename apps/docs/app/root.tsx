@@ -62,6 +62,11 @@ export function ErrorBoundary({error}: Route.ErrorBoundaryProps) {
 				paddingInline: "4",
 				paddingBlockEnd: "4",
 				marginInline: "auto",
+				lg: {
+					paddingBlockStart: "24",
+					paddingInline: "8",
+					paddingBlockEnd: "8",
+				},
 			})}
 		>
 			<h1>{message}</h1>

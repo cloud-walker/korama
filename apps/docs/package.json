@@ -24,7 +24,9 @@
 		"@types/node": "^24.2.1",
 		"@types/react": "^19.1.10",
 		"@types/react-dom": "^19.1.7",
+		"comptime": "^0.0.2",
 		"typescript": "~5.9.2",
+		"unplugin": "^2.3.5",
 		"vite": "^7.1.2",
 		"vite-tsconfig-paths": "^5.1.4"
 	}
