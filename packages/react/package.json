@@ -11,7 +11,8 @@
 	"scripts": {
 		"check-types": "tsc",
 		"lint": "publint --strict && attw --profile esm-only --pack .",
-		"build": "tsup",
+		"dev": "tsup --watch --onSuccess \"panda ship --outfile dist/panda.buildinfo.json\"",
+		"build": "tsup && panda ship --outfile dist/panda.buildinfo.json",
 		"test": "vitest",
 		"coverage": "vitest run --coverage"
 	},
@@ -19,10 +20,18 @@
 		".": {
 			"types": "./dist/main.d.ts",
 			"default": "./dist/main.js"
+		},
+		"./config": {
+			"types": "./dist/panda.d.ts",
+			"default": "./dist/panda.js"
 		}
+	},
+	"dependencies": {
+		"@korama/core": "workspace:*"
 	},
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.18.2",
+		"@pandacss/dev": "^1.0.1",
 		"@types/react": "^19.1.10",
 		"@types/react-dom": "^19.1.7",
 		"@vitejs/plugin-react": "^5.0.0",
@@ -37,6 +46,7 @@
 		"vitest-browser-react": "^1.0.1"
 	},
 	"peerDependencies": {
+		"@pandacss/dev": "^1",
 		"react": "^19.1.0"
 	}
 }

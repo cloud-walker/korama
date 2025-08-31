@@ -15,12 +15,12 @@
 			"semicolons": "asNeeded"
 		}
 	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
 	"files": {
-		"includes": [
-			"*.{js,ts}",
-			"apps/**/*.{ts,tsx}",
-			"packages/**/*.{ts,tsx}",
-			"!**/{styled-system,.react-router,dist}/**"
-		]
+		"includes": ["*.{js,ts}", "apps/**/*.{ts,tsx}", "packages/**/*.{ts,tsx}"]
 	}
 }

@@ -1,7 +1,37 @@
 {
 	"name": "@korama/core",
 	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"lint": "publint --strict && attw --profile esm-only --pack .",
+		"build": "tsup",
+		"dev": "tsup --watch --onSuccess \"panda codegen\"",
+		"prepare": "panda codegen && pnpm build"
+	},
+	"files": [
+		"dist",
+		"styled-system"
+	],
 	"publishConfig": {
 		"access": "public"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/main.d.ts",
+			"default": "./dist/main.js"
+		},
+		"./config": {
+			"types": "./dist/panda.d.ts",
+			"default": "./dist/panda.js"
+		}
+	},
+	"dependencies": {
+		"@pandacss/dev": "^1.0.1"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.18.2",
+		"publint": "^0.3.12",
+		"tsup": "^8.5.0",
+		"typescript": "~5.9.2"
 	}
 }

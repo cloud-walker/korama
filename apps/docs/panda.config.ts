@@ -1,24 +1,6 @@
-import {defineConfig} from "@pandacss/dev"
+import {defineConfig} from "@korama/react/config"
 
 export default defineConfig({
-	preflight: true,
-	strictPropertyValues: true,
-	strictTokens: true,
-	validation: "error",
-	jsxFramework: "react",
-	jsxStyleProps: "minimal",
-
 	// Where to look for your css declarations
-	include: ["./app/**/*.{js,jsx,ts,tsx}"],
-
-	// Files to exclude
-	exclude: [],
-
-	// Useful for theme customization
-	theme: {
-		extend: {},
-	},
-
-	// The output directory for your css system
-	outdir: "styled-system",
+	include: ["./app/**/*.{ts,tsx}"],
 })

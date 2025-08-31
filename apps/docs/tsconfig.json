@@ -4,7 +4,6 @@
 		"**/.server/**/*",
 		"**/.client/**/*",
 		".react-router/types/**/*",
-		"styled-system/types/**/*"
 	],
 	"compilerOptions": {
 		"lib": ["DOM", "DOM.Iterable", "ES2022"],
