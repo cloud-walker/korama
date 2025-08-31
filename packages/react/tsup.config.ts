@@ -1,7 +1,10 @@
 import {defineConfig} from "tsup"
 
 export default defineConfig({
-	entry: ["src/main.ts"],
+	entry: {
+		main: "./src/main.ts",
+		panda: "./src/panda/main.ts",
+	},
 	format: ["esm"],
 	dts: true,
 })

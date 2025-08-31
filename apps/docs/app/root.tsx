@@ -1,3 +1,4 @@
+import {css} from "@korama/core"
 import {
 	isRouteErrorResponse,
 	Links,
@@ -7,7 +8,6 @@ import {
 	ScrollRestoration,
 } from "react-router"
 
-import {css} from "styled-system/css"
 import type {Route} from "./+types/root"
 import stylesheet from "./app.css?url"
 

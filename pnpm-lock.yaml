@@ -27,6 +27,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@korama/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@korama/react':
         specifier: workspace:*
         version: link:../../packages/react
@@ -94,10 +97,17 @@ importers:
         version: 5.9.2
 
   packages/react:
+    dependencies:
+      '@korama/core':
+        specifier: workspace:*
+        version: link:../core
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ^0.18.2
         version: 0.18.2
+      '@pandacss/dev':
+        specifier: ^1.0.1
+        version: 1.0.1(typescript@5.9.2)
       '@types/react':
         specifier: ^19.1.10
         version: 19.1.10

@@ -1,6 +1,8 @@
 import {defineConfig as definePandaConfig} from "@pandacss/dev"
 
-export function defineConfig(props: {include?: string[]} = {}) {
+export type KoramaConfig = {include?: string[]}
+
+export function defineConfig(props: KoramaConfig = {}) {
 	return definePandaConfig({
 		...props,
 		preflight: true,
