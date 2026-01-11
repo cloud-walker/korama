@@ -4,4 +4,4 @@ packages:
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - esbuild
-useNodeVersion: 22.18.0
+useNodeVersion: 24.12.0
