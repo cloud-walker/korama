@@ -3,15 +3,15 @@ import {render} from "vitest-browser-react"
 
 import {Box} from "."
 
-test("works properly", () => {
-	const screen = render(<Box.button type="button">Click me</Box.button>)
+test("works properly", async () => {
+	const screen = await render(<Box.button type="button">Click me</Box.button>)
 
 	expect(screen.getByRole("button", {name: "Click me"})).toBeInTheDocument()
 })
 
 describe("as prop", () => {
 	test("render div as a button", async () => {
-		const screen = render(
+		const screen = await render(
 			<Box.div as={<button type="button" />}>Div as a button</Box.div>,
 		)
 
@@ -20,8 +20,8 @@ describe("as prop", () => {
 		).toBeInTheDocument()
 	})
 
-	test("overrides props of the default element", () => {
-		const screen = render(
+	test("overrides props of the default element", async () => {
+		const screen = await render(
 			<Box.div
 				data-testid="default"
 				as={<button data-testid="overidden" type="button" />}
@@ -36,7 +36,7 @@ describe("as prop", () => {
 	test("event handlers override", async () => {
 		const handleDivClick = vi.fn()
 		const handleButtonClick = vi.fn()
-		const screen = render(
+		const screen = await render(
 			<Box.div
 				onClick={handleDivClick}
 				as={<button type="button" onClick={handleButtonClick} />}
@@ -54,7 +54,7 @@ describe("as prop", () => {
 	})
 
 	test("merge style props", async () => {
-		const screen = render(
+		const screen = await render(
 			<Box.div
 				style={{color: "rgb(0, 255, 0)", backgroundColor: "rgb(0, 0, 255)"}}
 				as={<button type="button" style={{color: "rgb(255, 0, 0)"}} />}
@@ -71,7 +71,7 @@ describe("as prop", () => {
 	})
 
 	test("merge className props", async () => {
-		const screen = render(
+		const screen = await render(
 			<Box.div className="alpha" as={<button type="button" className="beta" />}>
 				Click me
 			</Box.div>,
@@ -82,8 +82,8 @@ describe("as prop", () => {
 		await expect.element(button).toHaveClass("alpha beta")
 	})
 
-	test("pass className and style props to the as prop element", () => {
-		const screen = render(
+	test("pass className and style props to the as prop element", async () => {
+		const screen = await render(
 			<Box.div
 				as={
 					<button
@@ -102,8 +102,8 @@ describe("as prop", () => {
 		expect(button).toHaveStyle({color: "rgb(0, 255, 0)"})
 	})
 
-	test("render prop", () => {
-		const screen = render(
+	test("render prop", async () => {
+		const screen = await render(
 			<Box.div as={(props) => <button {...props} type="button" />}>
 				Render prop button
 			</Box.div>,
@@ -116,23 +116,25 @@ describe("as prop", () => {
 })
 
 describe("ref handling", () => {
-	test("should forward ref to the underlying element", () => {
+	test("should forward ref to the underlying element", async () => {
 		const ref = vi.fn()
-		render(<Box.div ref={ref}>Test</Box.div>)
+		await render(<Box.div ref={ref}>Test</Box.div>)
 
 		expect(ref).toHaveBeenCalledWith(expect.any(HTMLDivElement))
 	})
 
-	test("should forward ref to the as prop element", () => {
+	test("should forward ref to the as prop element", async () => {
 		const ref = vi.fn()
-		render(<Box.div as={<button type="button" ref={ref} />}>Test</Box.div>)
+		await render(
+			<Box.div as={<button type="button" ref={ref} />}>Test</Box.div>,
+		)
 
 		expect(ref).toHaveBeenCalledWith(expect.any(HTMLButtonElement))
 	})
 
-	test("should forward ref to the render prop element", () => {
+	test("should forward ref to the render prop element", async () => {
 		const ref = vi.fn()
-		render(
+		await render(
 			<Box.div as={(props) => <button {...props} type="button" ref={ref} />}>
 				Render prop button with ref
 			</Box.div>,
@@ -141,10 +143,10 @@ describe("ref handling", () => {
 		expect(ref).toHaveBeenCalledWith(expect.any(HTMLButtonElement))
 	})
 
-	test("should forward ref on both <Box.div> and <button>", () => {
+	test("should forward ref on both <Box.div> and <button>", async () => {
 		const buttonRef = vi.fn()
 		const divRef = vi.fn()
-		render(
+		await render(
 			<Box.div ref={divRef} as={<button type="button" ref={buttonRef} />}>
 				Test
 			</Box.div>,
