@@ -40,3 +40,6 @@ yarn-error.log*
 # Claude AI
 .claude/worktrees
 .claude/*.local.json
+
+# fallow
+.fallow

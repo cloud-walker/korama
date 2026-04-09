@@ -1,6 +1,6 @@
 import {Box} from "../Box"
 
-export namespace Anchor {
+export declare namespace Anchor {
 	export type Props = Box.Props<"a">
 }
 

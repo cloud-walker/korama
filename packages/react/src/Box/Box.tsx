@@ -4,13 +4,6 @@ import {mergeProps} from "./mergeProps"
 import {getRefFromAsProp, mergeRefs} from "./mergeRefs"
 import type {AsProp, ElementType} from "./types"
 
-export namespace Box {
-	export type Props<TElementType extends ElementType> =
-		React.ComponentPropsWithRef<TElementType> & {
-			as?: AsProp
-		}
-}
-
 function makeElementComponent<TElementType extends ElementType>(
 	element: TElementType,
 ) {
@@ -35,6 +28,12 @@ type ElementComponents = {
 
 const componentsCache: Partial<ElementComponents> = {}
 
+export declare namespace Box {
+	type Props<TElementType extends ElementType> =
+		React.ComponentPropsWithRef<TElementType> & {
+			as?: AsProp
+		}
+}
 export const Box = new Proxy<ElementComponents>({} as ElementComponents, {
 	get(_, elementType: ElementType) {
 		componentsCache[elementType] ??= makeElementComponent(elementType)
