@@ -10,14 +10,14 @@
 	],
 	"exports": {
 		".": {
-			"types": "./dist/main.d.ts",
-			"default": "./dist/main.js"
+			"types": "./dist/main.d.mts",
+			"default": "./dist/main.mjs"
 		}
 	},
 	"scripts": {
 		"check-types": "tsc",
 		"lint": "publint --strict && attw --profile esm-only --pack .",
-		"build": "tsup",
+		"build": "tsdown",
 		"test": "vitest",
 		"coverage": "vitest run --coverage"
 	},
@@ -25,7 +25,7 @@
 		"@arethetypeswrong/cli": "^0.18.2",
 		"@vitest/coverage-v8": "^4.1.4",
 		"publint": "^0.3.18",
-		"tsup": "^8.5.1",
+		"tsdown": "^0.21.7",
 		"typescript": "~5.9.3",
 		"vitest": "^4.1.4"
 	}
