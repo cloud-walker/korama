@@ -13,10 +13,10 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.10",
-		"fallow": "^2.27.2",
+		"fallow": "^2.27.3",
 		"playwright": "^1.59.1",
 		"turbo": "^2.9.3",
-		"typescript": "~5.9.3"
+		"typescript": "~6.0.2"
 	},
 	"packageManager": "pnpm@10.33.0",
 	"engines": {

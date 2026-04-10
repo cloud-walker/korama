@@ -1,5 +1,5 @@
 import {Box} from "@korama/react"
-import {css} from "styled-system/css"
+import {css} from "../../styled-system/css"
 
 export default function Home() {
 	return (
