@@ -1,3 +1,4 @@
+// fallow-ignore-file unused-file
 import {Box} from "../Box"
 
 export declare namespace Button {
