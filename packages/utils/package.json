@@ -18,7 +18,7 @@
 		"check-types": "tsc",
 		"lint": "publint --strict && attw --profile esm-only --pack .",
 		"build": "tsdown",
-		"test": "vitest",
+		"test": "vitest run",
 		"coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
