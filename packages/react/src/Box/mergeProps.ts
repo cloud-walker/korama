@@ -1,73 +1,70 @@
-import { z } from "zod/v4-mini"
+import {z} from "zod/mini"
 
-const UnknownFunction = z.function({ input: z.array(z.unknown()) })
+const UnknownFunction = z.function({input: z.array(z.unknown())})
+type UnknownFunction = z.output<typeof UnknownFunction>
 const UnknownRecord = z.record(z.string(), z.unknown())
 type UnknownRecord = z.output<typeof UnknownRecord>
 
-function is<T extends z.ZodMiniType>(schema: T) {
-	return (value: unknown): value is z.output<T> =>
-		schema.safeParse(value).success
+function is<T extends z.ZodMiniType>(
+	schema: T,
+	value: unknown,
+): value is z.output<T> {
+	return schema.safeParse(value).success
 }
 
-export function mergeProps(
-	base: UnknownRecord,
-	overrides: UnknownRecord,
-): UnknownRecord {
-	const props = {...base}
+export function mergeProps(a: UnknownRecord, b: UnknownRecord): UnknownRecord {
+	const props = {...a}
 
-	for (const [overrideKey, overrideValue] of Object.entries(overrides)) {
-		if (is(UnknownFunction)(overrideValue) && overrideKey.startsWith("on")) {
-			const baseValue = props[overrideKey]
-			if (is(UnknownFunction)(baseValue)) {
-				props[overrideKey] = mergeEventHandlers(baseValue, overrideValue)
+	for (const [bKey, bValue] of Object.entries(b)) {
+		if (is(UnknownFunction, bValue) && bKey.startsWith("on")) {
+			const aValue = props[bKey]
+			if (is(UnknownFunction, aValue)) {
+				props[bKey] = mergeEventHandlers(aValue, bValue)
 				continue
 			}
 		}
 
-		if (overrideKey === "style") {
-			props.style = mergeStyles(base.style, overrides.style)
+		if (bKey === "style") {
+			props.style = mergeStyles(a.style, b.style)
 			continue
 		}
 
-		if (overrideKey === "className") {
-			props.className = mergeClassNames(base.className, overrides.className)
+		if (bKey === "className") {
+			props.className = mergeClassNames(a.className, b.className)
 			continue
 		}
 
-		props[overrideKey] = overrideValue
+		props[bKey] = bValue
 	}
 
 	return props
 }
 
-function mergeEventHandlers(
-	rawBase: unknown,
-	rawOverride: unknown,
-): (...args: unknown[]) => unknown {
-	const override = UnknownFunction.parse(rawOverride)
-	if (!rawBase) {
-		return override
+function mergeEventHandlers(a: unknown, b: unknown): UnknownFunction {
+	const parsedB = UnknownFunction.parse(b)
+	if (!a) {
+		return parsedB
 	}
-	const base = UnknownFunction.parse(rawBase)
+	const parsedA = UnknownFunction.parse(a)
 	return (...args: unknown[]) => {
-		const result = override(...args)
-		base(...args)
+		const result = parsedB(...args)
+		parsedA(...args)
 		return result
 	}
 }
 
-function mergeClassNames(rawBase: unknown, rawOverride: unknown): string {
-	const override = z.string().parse(rawOverride)
-	if (!rawBase) {
-		return `${override}`
+function mergeClassNames(a: unknown, b: unknown): string {
+	const parsedB = z.string().parse(b)
+	if (!a) {
+		return `${parsedB}`
 	}
-	return `${z.string().parse(rawBase)} ${override}`
+	return `${z.string().parse(a)} ${parsedB}`
 }
 
-function mergeStyles(rawBase: unknown, rawOverride: unknown): UnknownRecord {
-	const override = UnknownRecord.parse(rawOverride)
-	if (!rawBase) {
-		return override
+function mergeStyles(a: unknown, b: unknown): UnknownRecord {
+	const parsedB = UnknownRecord.parse(b)
+	if (!a) {
+		return parsedB
 	}
-	return {...UnknownRecord.parse(rawBase), ...override}
+	return {...UnknownRecord.parse(a), ...parsedB}
 }
