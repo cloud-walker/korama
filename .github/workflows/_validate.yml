@@ -37,6 +37,7 @@ jobs:
       - uses: pnpm/action-setup@v6
         with:
           run_install: true
+      - run: pnpm --filter docs exec react-router typegen
       - run: pnpm health
 
   coverage:
