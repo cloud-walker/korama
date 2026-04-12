@@ -9,6 +9,7 @@
 		"format": "biome format --write .",
 		"test": "turbo test",
 		"coverage": "turbo coverage",
+		"health": "fallow",
 		"release": "changeset publish"
 	},
 	"devDependencies": {
