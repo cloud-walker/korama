@@ -13,7 +13,7 @@
 		"lint": "publint --strict && attw --profile esm-only --pack .",
 		"build": "tsdown",
 		"test": "vitest run --browser.headless",
-		"coverage": "vitest run --coverage"
+		"coverage": "vitest run --browser.headless --coverage"
 	},
 	"exports": {
 		".": {
