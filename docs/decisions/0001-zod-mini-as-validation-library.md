@@ -1,6 +1,6 @@
 ---
 title: Use Zod Mini as the validation library across Korama
-description: Zod Mini (zod/v4-mini) is adopted as the official runtime validation library for the Korama monorepo.
+description: Zod Mini (zod/mini) is adopted as the official runtime validation library for the Korama monorepo.
 status: Accepted
 tags: [dependencies, validation, architecture]
 proposals: []
@@ -22,7 +22,7 @@ Runtime data validation is a recurring need across Korama packages: narrowing ge
 
 ## Considered Options
 
-- **Zod Mini** (`zod/v4-mini`) — functional subset of Zod v4, ~10–12 KB min+gzip, native tree-shaking, TypeScript-first inference, wide ecosystem.
+- **Zod Mini** (`zod/mini`) — functional subset of Zod v4, ~10–12 KB min+gzip, native tree-shaking, TypeScript-first inference, wide ecosystem.
 - **Valibot** — functional, ~10 KB min+gzip, native tree-shaking, TypeScript-first inference, smaller ecosystem.
 - **Zod** (full) — OOP/fluent, ~50 KB min+gzip, partial tree-shaking, dominant ecosystem.
 - **Hand-written type guards** — zero dependencies, no composability, no declarative schema.
@@ -30,7 +30,7 @@ Runtime data validation is a recurring need across Korama packages: narrowing ge
 
 ## Decision Outcome
 
-Chosen: **Zod Mini** (`zod/v4-mini`), because its bundle footprint (~10–12 KB) is comparable to Valibot while offering the significantly broader Zod ecosystem. Consumers who already use Zod (tRPC, TanStack Form, react-hook-form, etc.) pay no additional bundle cost, and developers familiar with Zod's API need no context switch.
+Chosen: **Zod Mini** (`zod/mini`), because its bundle footprint (~10–12 KB) is comparable to Valibot while offering the significantly broader Zod ecosystem. Consumers who already use Zod (tRPC, TanStack Form, react-hook-form, etc.) pay no additional bundle cost, and developers familiar with Zod's API need no context switch.
 
 ### Consequences
 
@@ -43,7 +43,7 @@ Chosen: **Zod Mini** (`zod/v4-mini`), because its bundle footprint (~10–12 KB)
 
 ## Pros and Cons of the Options
 
-### Zod Mini (`zod/v4-mini`)
+### Zod Mini (`zod/mini`)
 
 - Good: ~10–12 KB min+gzip — appropriate for a library dependency.
 - Good: Functional API subset; every schema is a standalone function, enabling full tree-shaking.
@@ -80,7 +80,7 @@ Chosen: **Zod Mini** (`zod/v4-mini`), because its bundle footprint (~10–12 KB)
 ## Usage guidelines
 
 **Do:**
-- Import from `"zod/v4-mini"`: `import { z } from "zod/v4-mini"`.
+- Import from `"zod/mini"`: `import { z } from "zod/mini"`.
 - Use a local `is(schema)(value)` higher-order helper for narrowing in hot paths (no exception thrown).
 - Use `Schema.parse(value)` at package boundaries where invalid input should be a hard error.
 - Derive TypeScript types from schemas: `type Foo = z.output<typeof FooSchema>`.
@@ -89,4 +89,4 @@ Chosen: **Zod Mini** (`zod/v4-mini`), because its bundle footprint (~10–12 KB)
 - Expose Zod schemas in a package's public API surface — they are an internal implementation detail.
 - Use `Schema.parse` inside React render functions; prefer the `is` helper or move parsing to the call site.
 - Add Zod validation to public React props — rely on TypeScript at compile time instead.
-- Import from `"zod"` (full build) — always use `"zod/v4-mini"` to keep the bundle minimal.
+- Import from `"zod"` (full build) — always use `"zod/mini"` to keep the bundle minimal.
