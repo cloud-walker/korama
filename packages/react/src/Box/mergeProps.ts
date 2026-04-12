@@ -1,8 +1,13 @@
-import * as v from "valibot"
+import { z } from "zod/v4-mini"
 
-const UnknownFunction = v.function()
-const UnknownRecord = v.record(v.string(), v.unknown())
-type UnknownRecord = v.InferOutput<typeof UnknownRecord>
+const UnknownFunction = z.function({ input: z.array(z.unknown()) })
+const UnknownRecord = z.record(z.string(), z.unknown())
+type UnknownRecord = z.output<typeof UnknownRecord>
+
+function is<T extends z.ZodMiniType>(schema: T) {
+	return (value: unknown): value is z.output<T> =>
+		schema.safeParse(value).success
+}
 
 export function mergeProps(
 	base: UnknownRecord,
@@ -11,9 +16,9 @@ export function mergeProps(
 	const props = {...base}
 
 	for (const [overrideKey, overrideValue] of Object.entries(overrides)) {
-		if (v.is(UnknownFunction, overrideValue) && overrideKey.startsWith("on")) {
+		if (is(UnknownFunction)(overrideValue) && overrideKey.startsWith("on")) {
 			const baseValue = props[overrideKey]
-			if (v.is(UnknownFunction, baseValue)) {
+			if (is(UnknownFunction)(baseValue)) {
 				props[overrideKey] = mergeEventHandlers(baseValue, overrideValue)
 				continue
 			}
@@ -39,11 +44,11 @@ function mergeEventHandlers(
 	rawBase: unknown,
 	rawOverride: unknown,
 ): (...args: unknown[]) => unknown {
-	const override = v.parse(UnknownFunction, rawOverride)
+	const override = UnknownFunction.parse(rawOverride)
 	if (!rawBase) {
 		return override
 	}
-	const base = v.parse(UnknownFunction, rawBase)
+	const base = UnknownFunction.parse(rawBase)
 	return (...args: unknown[]) => {
 		const result = override(...args)
 		base(...args)
@@ -52,17 +57,17 @@ function mergeEventHandlers(
 }
 
 function mergeClassNames(rawBase: unknown, rawOverride: unknown): string {
-	const override = v.parse(v.string(), rawOverride)
+	const override = z.string().parse(rawOverride)
 	if (!rawBase) {
 		return `${override}`
 	}
-	return `${v.parse(v.string(), rawBase)} ${override}`
+	return `${z.string().parse(rawBase)} ${override}`
 }
 
 function mergeStyles(rawBase: unknown, rawOverride: unknown): UnknownRecord {
-	const override = v.parse(UnknownRecord, rawOverride)
+	const override = UnknownRecord.parse(rawOverride)
 	if (!rawBase) {
 		return override
 	}
-	return {...v.parse(UnknownRecord, rawBase), ...override}
+	return {...UnknownRecord.parse(rawBase), ...override}
 }

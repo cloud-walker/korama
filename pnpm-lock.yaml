@@ -78,9 +78,9 @@ importers:
 
   packages/react:
     dependencies:
-      valibot:
-        specifier: ^1.3.1
-        version: 1.3.1(typescript@6.0.2)
+      zod:
+        specifier: ^4.0.0
+        version: 4.3.6
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ^0.18.2
