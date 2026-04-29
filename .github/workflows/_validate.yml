@@ -37,6 +37,7 @@ jobs:
       - uses: fallow-rs/fallow@v2
         with:
           format: json
+          comment: true
 
   coverage:
     runs-on: ubuntu-24.04
