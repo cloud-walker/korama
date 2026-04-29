@@ -38,21 +38,30 @@ export default function App() {
 	return <Outlet />
 }
 
-export function ErrorBoundary({error}: Route.ErrorBoundaryProps) {
-	let message = "Oops!"
-	let details = "An unexpected error occurred."
-	let stack: string | undefined
-
-	if (isRouteErrorResponse(error)) {
-		message = error.status === 404 ? "404" : "Error"
-		details =
-			error.status === 404
-				? "The requested page could not be found."
-				: error.statusText || details
-	} else if (import.meta.env.DEV && error && error instanceof Error) {
-		details = error.message
-		stack = error.stack
+function getRouteErrorContent(error: {status: number; statusText: string}) {
+	if (error.status === 404) {
+		return {message: "404", details: "The requested page could not be found."}
 	}
+	return {
+		message: "Error",
+		details: error.statusText || "An unexpected error occurred.",
+	}
+}
+
+function getErrorContent(error: Route.ErrorBoundaryProps["error"]): {
+	message: string
+	details: string
+	stack?: string
+} {
+	if (isRouteErrorResponse(error)) return getRouteErrorContent(error)
+	if (import.meta.env.DEV && error instanceof Error) {
+		return {message: "Oops!", details: error.message, stack: error.stack}
+	}
+	return {message: "Oops!", details: "An unexpected error occurred."}
+}
+
+export function ErrorBoundary({error}: Route.ErrorBoundaryProps) {
+	const {message, details, stack} = getErrorContent(error)
 
 	return (
 		<main
