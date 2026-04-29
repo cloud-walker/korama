@@ -34,10 +34,12 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v6
+      - uses: fallow-rs/fallow@v2
         with:
-          run_install: true
-      - run: pnpm health
+          format: sarif
+      - uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: fallow-results.sarif
 
   coverage:
     runs-on: ubuntu-24.04
