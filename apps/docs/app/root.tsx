@@ -42,7 +42,10 @@ function getRouteErrorContent(error: {status: number; statusText: string}) {
 	if (error.status === 404) {
 		return {message: "404", details: "The requested page could not be found."}
 	}
-	return {message: "Error", details: error.statusText || "An unexpected error occurred."}
+	return {
+		message: "Error",
+		details: error.statusText || "An unexpected error occurred.",
+	}
 }
 
 function getErrorContent(error: Route.ErrorBoundaryProps["error"]): {
