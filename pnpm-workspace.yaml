@@ -8,4 +8,3 @@ onlyBuiltDependencies:
   - '@biomejs/biome'
   - esbuild
   - fallow
-useNodeVersion: 24.14.1
