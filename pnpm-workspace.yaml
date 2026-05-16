@@ -1,8 +1,10 @@
 packages:
   - apps/*
   - packages/*
+allowBuilds:
+  esbuild: true
+  fallow: true
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - esbuild
   - fallow
-useNodeVersion: 24.14.1

@@ -24,7 +24,7 @@
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.18.2",
 		"@vitest/coverage-v8": "^4.1.6",
-		"publint": "^0.3.20",
+		"publint": "^0.3.21",
 		"tsdown": "^0.22.0",
 		"typescript": "~6.0.3",
 		"vitest": "^4.1.6"
