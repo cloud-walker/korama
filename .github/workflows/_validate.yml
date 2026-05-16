@@ -32,6 +32,9 @@ jobs:
 
   health:
     runs-on: ubuntu-24.04
+    permissions: 
+      pull-requests: write
+      contents: read
     steps:
       - uses: actions/checkout@v6
         with:
