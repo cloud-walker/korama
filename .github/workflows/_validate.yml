@@ -45,7 +45,6 @@ jobs:
       - run: pnpm build
       - uses: fallow-rs/fallow@v2
         with:
-          format: json
           comment: true
 
   coverage:
