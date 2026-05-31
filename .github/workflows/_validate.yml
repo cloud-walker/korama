@@ -48,6 +48,14 @@ jobs:
         with:
           comment: true
           sarif: true
+      # fallow's own SARIF upload is skipped on public repos (it checks for
+      # GitHub Advanced Security, which only exists on private repos). Code
+      # Scanning is free here, so upload the generated SARIF ourselves.
+      - name: Upload fallow SARIF to code scanning
+        if: ${{ always() && hashFiles('fallow-results.sarif') != '' }}
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: fallow-results.sarif
 
   coverage:
     runs-on: ubuntu-24.04
