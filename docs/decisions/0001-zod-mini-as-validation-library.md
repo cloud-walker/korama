@@ -3,7 +3,6 @@ title: Use Zod Mini as the validation library across Korama
 description: Zod Mini (zod/mini) is adopted as the official runtime validation library for the Korama monorepo.
 status: Accepted
 tags: [dependencies, validation, architecture]
-proposals: []
 ---
 
 # Use Zod Mini as the validation library across Korama
