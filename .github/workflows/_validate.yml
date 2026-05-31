@@ -32,9 +32,10 @@ jobs:
 
   health:
     runs-on: ubuntu-24.04
-    permissions: 
+    permissions:
       pull-requests: write
       contents: read
+      security-events: write
     steps:
       - uses: actions/checkout@v6
         with:
@@ -46,6 +47,7 @@ jobs:
       - uses: fallow-rs/fallow@v2
         with:
           comment: true
+          sarif: true
 
   coverage:
     runs-on: ubuntu-24.04
