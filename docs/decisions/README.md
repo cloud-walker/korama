@@ -9,6 +9,10 @@ To create or evolve an ADR, use the `authoring-adr` skill: it covers numbering, 
 | #    | Title                                                                          | Status   |
 | ---- | ------------------------------------------------------------------------------ | -------- |
 | [0001](0001-zod-mini-as-validation-library.md) | Use Zod Mini as the validation library across Korama | Accepted |
+| [0002](0002-esm-only-publishing.md) | Publish packages as ESM-only | Accepted |
+| [0003](0003-box-and-as-prop-composition-model.md) | Polymorphic Box and the `as` prop as the component composition model | Accepted |
+| [0004](0004-browser-mode-component-testing.md) | Test components in a real browser with Vitest browser mode | Accepted |
+| [0005](0005-react-19-baseline.md) | Target React 19 as the baseline version | Accepted |
 
 Lifecycle: `Proposed` → `Accepted` → `Retired` / `Superseded` (or `Rejected` if never adopted).
 

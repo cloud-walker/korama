@@ -1,12 +1,13 @@
 # docs/
 
-This folder holds design-level documentation for Korama: records of architectural decisions that have been made.
+This folder holds design-level documentation for Korama: the project vision and records of architectural decisions that have been made.
 
 ## Structure
 
 ```
 docs/
-└── decisions/   — ADRs: records of architectural decisions
+├── VISION.md     — the forward-looking principles guiding the project
+└── decisions/    — ADRs: records of architectural decisions
 ```
 
 ## When to write an ADR (decision)
