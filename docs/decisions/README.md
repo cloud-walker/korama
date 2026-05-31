@@ -13,6 +13,7 @@ To create or evolve an ADR, use the `authoring-adr` skill: it covers numbering, 
 | [0003](0003-box-and-as-prop-composition-model.md) | Polymorphic Box and the `as` prop as the component composition model | Accepted |
 | [0004](0004-browser-mode-component-testing.md) | Test components in a real browser with Vitest browser mode | Accepted |
 | [0005](0005-react-19-baseline.md) | Target React 19 as the baseline version | Accepted |
+| [0006](0006-pandacss-as-official-styling-solution.md) | Adopt PandaCSS, wrapped by @korama/core, as the official styling solution | Accepted |
 
 Lifecycle: `Proposed` → `Accepted` → `Retired` / `Superseded` (or `Rejected` if never adopted).
 
