@@ -1,5 +1,4 @@
 {
   "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
-  "entry": ["**/panda.config.ts"],
   "ignoreDependencies": ["react", "react-dom", "@arethetypeswrong/cli", "isbot", "@korama/react"]
 }
