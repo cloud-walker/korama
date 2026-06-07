@@ -22,11 +22,11 @@
 		"coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
-		"@arethetypeswrong/cli": "^0.18.2",
-		"@vitest/coverage-v8": "^4.1.7",
+		"@arethetypeswrong/cli": "^0.18.3",
+		"@vitest/coverage-v8": "^4.1.8",
 		"publint": "^0.3.21",
-		"tsdown": "^0.22.0",
+		"tsdown": "^0.22.2",
 		"typescript": "~6.0.3",
-		"vitest": "^4.1.7"
+		"vitest": "^4.1.8"
 	}
 }
