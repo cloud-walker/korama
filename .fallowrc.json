@@ -1,4 +1,5 @@
 {
   "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
-  "ignoreDependencies": ["react", "react-dom", "@arethetypeswrong/cli", "isbot", "@korama/react"]
+  "ignoreDependencies": ["react-dom", "@arethetypeswrong/cli"],
+  "ignoreExports": [{ "file": "apps/docs/postcss.config.cjs", "exports": ["plugins"] }]
 }
