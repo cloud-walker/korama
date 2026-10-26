@@ -1,30 +1,12 @@
 # docs/
 
-This folder holds design-level documentation for Korama: the project vision and records of architectural decisions that have been made.
-
-## Structure
+Design-level documentation for Korama.
 
 ```
 docs/
-├── VISION.md     — the forward-looking principles guiding the project
-└── decisions/    — ADRs: records of architectural decisions
+├── VISION.md   — the forward-looking principles guiding the project
+├── adr/        — architectural decision records
+└── agents/     — configuration for the engineering agent skills
 ```
 
-## When to write an ADR (decision)
-
-Write an ADR when a significant decision has been made (or is actively being made) and the rationale should be captured for future contributors.
-
-See [`decisions/README.md`](decisions/README.md) for the template, the index of existing decisions, and their current status.
-
-## File naming
-
-```
-NNNN-kebab-case-title.md
-```
-
-Where `NNNN` is a zero-padded sequential number starting at `0001`. Check the existing files in `decisions/` to find the next number.
-
-Example:
-```
-decisions/0001-zod-mini-as-validation-library.md
-```
+ADRs are sequentially numbered (`0001-kebab-case-title.md`). See `agents/domain.md` for how they are read and written.
