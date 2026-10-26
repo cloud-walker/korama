@@ -1,5 +1,5 @@
 {
   "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
-  "ignoreDependencies": ["react-dom", "@arethetypeswrong/cli"],
+  // Remove once fallow > 3.36.0 ships the fix for fallow-rs/fallow#3876 (CJS config keys flagged as unused exports)
   "ignoreExports": [{ "file": "apps/docs/postcss.config.cjs", "exports": ["plugins"] }]
 }
