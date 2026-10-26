@@ -1,17 +1,13 @@
-# AI Instructions: docs/
+## Agent skills
 
-This folder holds Korama's **decision records (ADRs)** under `docs/decisions/` — the recorded outcome of significant decisions, with their rationale. See `docs/decisions/README.md` for the index, current statuses, and the template.
+### Issue tracker
 
-## What NOT to create an ADR for
+Issues live in GitHub Issues (`cloud-walker/korama`, via the `gh` CLI). See `docs/agents/issue-tracker.md`.
 
-Don't open an ADR for:
+### Triage labels
 
-- Bug fixes (unless the fix reveals a systemic problem worth recording)
-- Routine dependency bumps
-- Style or formatting changes
-- Internal refactors with no API or behavioral impact
-- Changes already fully captured in a PR description or changeset
+Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
 
-## Skimming existing docs efficiently
+### Domain docs
 
-Each ADR's frontmatter contains `title` and `description` fields. Read only frontmatter first when you need to find a relevant decision — avoid reading the full body unless the frontmatter confirms it's relevant.
+Single-context: one `GLOSSARY.md` at the repo root; ADRs live in `docs/adr/`. See `docs/agents/domain.md`.
