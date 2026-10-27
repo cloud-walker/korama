@@ -10,6 +10,8 @@ export default defineConfig({
 			enabled: true,
 			provider: playwright({
 				contextOptions: {colorScheme: "dark"},
+				// GitHub-hosted runners ship Google Chrome, so CI skips `playwright install`.
+				launchOptions: process.env.CI ? {channel: "chrome"} : {},
 			}),
 			// https://vitest.dev/guide/browser/playwright
 			instances: [{browser: "chromium"}],
