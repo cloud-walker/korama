@@ -13,5 +13,5 @@ export default defineConfig({
 	bracketSameLine: false,
 	bracketSpacing: false,
 	sortImports: {},
-	ignorePatterns: ["**/*.{md,json,jsonc,yaml,yml,css,html}"],
+	sortPackageJson: false,
 })
