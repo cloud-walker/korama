@@ -14,7 +14,7 @@
 		"release": "changeset publish"
 	},
 	"devDependencies": {
-		"fallow": "^2.89.0",
+		"fallow": "^3.36.0",
 		"oxfmt": "^0.74.0",
 		"oxlint": "^1.89.0",
 		"playwright": "^1.60.0",
