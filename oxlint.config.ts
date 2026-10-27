@@ -8,5 +8,4 @@ export default defineConfig({
 	rules: {
 		"react/react-in-jsx-scope": "off",
 	},
-	ignorePatterns: ["**/styled-system/**", "**/.react-router/**", "**/dist/**"],
 })

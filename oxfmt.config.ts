@@ -13,8 +13,5 @@ export default defineConfig({
 	bracketSameLine: false,
 	bracketSpacing: false,
 	sortImports: {},
-	ignorePatterns: [
-		"**/{styled-system,.react-router,dist}",
-		"**/*.{md,json,jsonc,yaml,yml,css,html}",
-	],
+	ignorePatterns: ["**/*.{md,json,jsonc,yaml,yml,css,html}"],
 })
