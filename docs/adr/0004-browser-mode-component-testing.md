@@ -9,4 +9,4 @@
 
 ## Consequences
 
-Browser tests are slower than jsdom and CI must provision Playwright browsers.
+Browser tests are slower than jsdom and CI uses the Google Chrome preinstalled on GitHub-hosted runners (`channel: "chrome"` when `CI` is set) instead of downloading Playwright browsers; locally Playwright's Chromium is used.

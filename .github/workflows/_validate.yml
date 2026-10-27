@@ -57,12 +57,11 @@ jobs:
         with:
           sarif_file: fallow-results.sarif
 
-  coverage:
+  test:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v6
         with:
           run_install: true
-      - run: pnpm -w exec playwright install --with-deps
       - run: pnpm coverage
