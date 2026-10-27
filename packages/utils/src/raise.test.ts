@@ -1,4 +1,5 @@
 import {expect, test} from "vitest"
+
 import {raise} from "./raise"
 
 test("as a string", () => {

@@ -4,9 +4,9 @@ export type ElementType = Extract<React.ElementType, string>
  * @public
  */
 export type RenderProp<
-	// biome-ignore lint/suspicious/noExplicitAny: We intentionally allow any here to be able to merge props
+	// oxlint-disable-next-line typescript/no-explicit-any -- We intentionally allow any here to be able to merge props
 	TProps = React.HTMLAttributes<any> & {
-		// biome-ignore lint/suspicious/noExplicitAny: We intentionally allow any here to be able to merge props
+		// oxlint-disable-next-line typescript/no-explicit-any -- We intentionally allow any here to be able to merge props
 		ref?: React.Ref<any>
 	},
 > = (props: TProps) => React.ReactNode
