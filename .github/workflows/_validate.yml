@@ -57,7 +57,7 @@ jobs:
         with:
           sarif_file: fallow-results.sarif
 
-  coverage:
+  test:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
