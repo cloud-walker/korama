@@ -16,13 +16,12 @@
 	},
 	"scripts": {
 		"check-types": "tsc",
-		"lint": "publint --strict && attw --profile esm-only --pack .",
 		"build": "tsdown",
 		"test": "vitest run",
 		"coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
-		"@arethetypeswrong/cli": "^0.18.3",
+		"@arethetypeswrong/core": "^0.18.3",
 		"@vitest/coverage-v8": "^4.1.8",
 		"publint": "^0.3.21",
 		"tsdown": "^0.22.2",

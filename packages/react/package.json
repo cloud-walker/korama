@@ -10,7 +10,6 @@
 	],
 	"scripts": {
 		"check-types": "tsc",
-		"lint": "publint --strict && attw --profile esm-only --pack .",
 		"build": "tsdown",
 		"test": "vitest run --browser.headless",
 		"coverage": "vitest run --browser.headless --coverage"
@@ -22,7 +21,7 @@
 		}
 	},
 	"devDependencies": {
-		"@arethetypeswrong/cli": "^0.18.3",
+		"@arethetypeswrong/core": "^0.18.3",
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^6.0.2",
