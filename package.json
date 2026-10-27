@@ -1,20 +1,22 @@
 {
 	"name": "korama",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",
-		"lint": "biome check . && turbo lint",
+		"lint": "oxlint && oxfmt --check && turbo lint",
 		"check-types": "turbo check-types",
-		"format": "biome format --write .",
+		"format": "oxfmt",
 		"test": "turbo test",
 		"coverage": "turbo coverage",
 		"health": "turbo build && fallow",
 		"release": "changeset publish"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.16",
 		"fallow": "^3.36.0",
+		"oxfmt": "^0.74.0",
+		"oxlint": "^1.89.0",
 		"turbo": "^2.9.16",
 		"typescript": "~6.0.3"
 	},

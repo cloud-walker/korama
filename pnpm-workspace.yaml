@@ -16,6 +16,5 @@ allowBuilds:
   esbuild: true
   fallow: true
 onlyBuiltDependencies:
-  - '@biomejs/biome'
   - esbuild
   - fallow
