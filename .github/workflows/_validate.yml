@@ -7,27 +7,21 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
-        with:
-          run_install: true
+      - uses: pnpm/setup@v3
       - run: pnpm check-types
 
   lint:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
-        with:
-          run_install: true
+      - uses: pnpm/setup@v3
       - run: pnpm lint
 
   build:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
-        with:
-          run_install: true
+      - uses: pnpm/setup@v3
       - run: pnpm build
 
   health:
@@ -40,10 +34,11 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: pnpm/action-setup@v6
-        with:
-          run_install: true
+      - uses: pnpm/setup@v3
       - run: pnpm build
+      # fallow's action installs the CLI with `npm install -g` and then runs
+      # `fallow`; the pnpm-managed Node doesn't have npm's global bin on PATH.
+      - run: echo "$(npm prefix -g)/bin" >> "$GITHUB_PATH"
       - uses: fallow-rs/fallow@v3
         with:
           comment: true
@@ -61,7 +56,5 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
-        with:
-          run_install: true
+      - uses: pnpm/setup@v3
       - run: pnpm coverage
