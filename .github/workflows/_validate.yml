@@ -36,6 +36,9 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/setup@v3
       - run: pnpm build
+      # fallow's action installs the CLI with `npm install -g` and then runs
+      # `fallow`; the pnpm-managed Node doesn't have npm's global bin on PATH.
+      - run: echo "$(npm prefix -g)/bin" >> "$GITHUB_PATH"
       - uses: fallow-rs/fallow@v3
         with:
           comment: true
